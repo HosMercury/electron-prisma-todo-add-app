@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Hello World!</title>
+    <style>
+      button {
+        margin-left: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="color: red">Todos</h1>
+    <button type="button">Todos panel</button>
+    <ul></ul>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.querySelector('button');
+        const { ipcRenderer } = require('electron');
+        btn.addEventListener('click', () => {
+          ipcRenderer.send('todo:open');
+        });
+
+        ipcRenderer.on('todos:show', (e, todos) => {
+          console.log('here');
+          const ul = document.querySelector('ul');
+          ul.innerHTML = '';
+          todos.map((todo) => {
+            console.log(todo);
+            const li = document.createElement('li');
+            const text = document.createTextNode(todo.name);
+            const button = document.createElement('button');
+            button.innerHTML = 'Delete ME'; // Insert text
+            li.appendChild(text);
+            li.appendChild(button);
+            ul.appendChild(li);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

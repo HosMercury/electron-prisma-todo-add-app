@@ -1,0 +1,21 @@
+<html>
+  <head> </head>
+  <body>
+    <h1>todos</h1>
+
+    <form>
+      <label>Add Todo : <input autofocus type="text" /></label>
+      <button class="save">Save</button>
+    </form>
+    <button onclick="window.close()">close</button>
+    <script>
+      document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const { ipcRenderer } = require('electron');
+        const value = document.querySelector('input').value;
+        ipcRenderer.send('todo:save', value);
+        window.close();
+      });
+    </script>
+  </body>
+</html>

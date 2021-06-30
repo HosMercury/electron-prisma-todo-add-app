@@ -1,0 +1,23 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "electron app demo",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "build",
+    "dev": "nodemon --watch . --exec \"electron .\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^2.26.0"
+  },
+  "devDependencies": {
+    "electron": "^13.1.4",
+    "electron-builder": "^22.11.7",
+    "nodemon": "^2.0.7",
+    "prisma": "^2.26.0"
+  }
+}
