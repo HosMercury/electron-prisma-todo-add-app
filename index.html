@@ -23,11 +23,9 @@
         });
 
         ipcRenderer.on('todos:show', (e, todos) => {
-          console.log('here');
           const ul = document.querySelector('ul');
           ul.innerHTML = '';
           todos.map((todo) => {
-            console.log(todo);
             const li = document.createElement('li');
             const text = document.createTextNode(todo.name);
             const button = document.createElement('button');
